@@ -1,9 +1,13 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
 const fs = require("fs");
 const path = require("path");
+
+dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env.local") });
+
 const { clean, normalizeStudentPayload, ensureStudentTableSql, formatStudentRow } = require("./db");
 
 const app = express();
