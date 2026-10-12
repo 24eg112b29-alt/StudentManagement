@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: anurag-student-management-system
+    env: node
+    plan: free
+    rootDir: anurag-student-management-system
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false

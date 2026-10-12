@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#182d5b">
+  <title>Student Management | Anurag University</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">AU</div>
+        <div><strong>Anurag</strong><span>UNIVERSITY</span></div>
+      </div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#"><span class="nav-icon">▦</span> Dashboard</a>
+      <a class="nav-item" href="#students"><span class="nav-icon">♙</span> Students</a>
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>Student portal</strong>
+        <p>Manage student records from one simple workspace.</p>
+      </div>
+      <div class="sidebar-footer"><span class="online-dot"></span> Local demo environment</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="crumb">Academic workspace <span>/</span> <b>Dashboard</b></div>
+        <div class="top-actions">
+          <div class="date-chip" id="todayLabel">Academic dashboard</div>
+          <div class="avatar">AU</div>
+        </div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">STUDENT INFORMATION SYSTEM</p>
+          <h1>Student dashboard</h1>
+          <p class="subheading">A clear overview of student records and enrollment.</p>
+        </div>
+        <button class="primary-btn" id="addStudentBtn"><span>＋</span> Add student</button>
+      </section>
+
+      <section class="stats-grid" aria-label="Student statistics">
+        <article class="stat-card">
+          <div class="stat-top"><span>Total students</span><span class="stat-icon purple">♙</span></div>
+          <div class="stat-number" id="totalCount">—</div>
+          <div class="stat-foot">All registered records</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Active students</span><span class="stat-icon green">✓</span></div>
+          <div class="stat-number" id="activeCount">—</div>
+          <div class="stat-foot"><span class="mini-dot green-dot"></span> Currently active</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Departments</span><span class="stat-icon blue">▤</span></div>
+          <div class="stat-number" id="departmentCount">—</div>
+          <div class="stat-foot">Unique departments represented</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>Inactive students</span><span class="stat-icon amber">Ⅱ</span></div>
+          <div class="stat-number" id="inactiveCount">—</div>
+          <div class="stat-foot">Not currently active</div>
+        </article>
+      </section>
+
+      <section class="panel" id="students">
+        <div class="panel-header">
+          <div><h2>Student records</h2><p>View, search, edit, or add student information.</p></div>
+          <div class="record-count" id="recordCount">0 records</div>
+        </div>
+        <div class="toolbar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search by name, ID, department..." autocomplete="off"></label>
+          <select id="statusFilter" aria-label="Filter by status">
+            <option value="All">All statuses</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+          <button class="secondary-btn" id="refreshBtn">↻ Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>STUDENT</th><th>STUDENT ID</th><th>DEPARTMENT</th><th>YEAR</th><th>STATUS</th><th class="actions-head">ACTIONS</th></tr></thead>
+            <tbody id="studentTableBody"><tr><td colspan="6" class="empty-state">Loading student records…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="panel-footer"><span id="showingLabel">Showing student records</span><span>Student Management System <span class="footer-sep">•</span> Demo</span></div>
+      </section>
+      <footer class="page-footer">Anurag University Student Management System <span>•</span> Academic records workspace</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="studentModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header"><div><p class="eyebrow">STUDENT DETAILS</p><h2 id="modalTitle">Add student</h2></div><button class="icon-btn" id="closeModalBtn" aria-label="Close">×</button></div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <label>Student ID<input name="id" id="studentId" placeholder="e.g. AU2026010" required maxlength="24"></label>
+          <label>Full name<input name="name" id="studentName" placeholder="Enter full name" required maxlength="100"></label>
+          <label>Email address<input name="email" id="studentEmail" type="email" placeholder="student@example.com" required maxlength="150"></label>
+          <label>Phone number<input name="phone" id="studentPhone" type="tel" placeholder="10-digit phone number" maxlength="20"></label>
+          <label>Department<select name="department" id="studentDepartment" required><option value="">Select department</option><option>Computer Science</option><option>Information Technology</option><option>Electronics</option><option>Electrical Engineering</option><option>Mechanical Engineering</option><option>Civil Engineering</option><option>Business Administration</option><option>Other</option></select></label>
+          <label>Academic year<select name="year" id="studentYear" required><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgraduate</option></select></label>
+          <label class="full-width">Enrollment status<select name="status" id="studentStatus"><option>Active</option><option>Inactive</option></select></label>
+        </div>
+        <div class="form-error" id="formError" role="alert"></div>
+        <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelBtn">Cancel</button><button type="submit" class="primary-btn" id="saveBtn">Save student</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

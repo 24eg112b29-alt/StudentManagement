@@ -1,0 +1,29 @@
+[
+  {
+    "id": "AU2026001",
+    "name": "Aarav Sharma",
+    "email": "aarav.sharma@example.com",
+    "phone": "9876543210",
+    "department": "Computer Science",
+    "year": "2nd Year",
+    "status": "Active"
+  },
+  {
+    "id": "AU2026002",
+    "name": "Priya Reddy",
+    "email": "priya.reddy@example.com",
+    "phone": "9876543211",
+    "department": "Electronics",
+    "year": "3rd Year",
+    "status": "Active"
+  },
+  {
+    "id": "AU2026003",
+    "name": "Mohammed Faizan",
+    "email": "faizan@example.com",
+    "phone": "9876543212",
+    "department": "Information Technology",
+    "year": "1st Year",
+    "status": "Inactive"
+  }
+]
